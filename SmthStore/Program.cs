@@ -1,7 +1,23 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+using SmthStore.Application.Services;
+using SmthStore.DataAccess;
+using SmthStore.DataAccess.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddDbContext<SmthStoreDbContext>(
+    options =>
+    {
+        options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(SmthStoreDbContext)));
+    });
+
+
+//builder.Services.AddScoped<ISmthsServices, SmthsService>();
+//builder.Services.AddScoped<ISmthsRepository, SmthsRepository>();
 
 var app = builder.Build();
 
@@ -12,6 +28,8 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.UseDeveloperExceptionPage();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
