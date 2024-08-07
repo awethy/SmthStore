@@ -6,9 +6,9 @@ namespace SmthStore.Application.Services
 {
     public class SmthsService : ISmthsServices
     {
-        private readonly SmthsRepository smthsRepository;
+        private readonly ISmthsRepository smthsRepository;
 
-        public SmthsService(SmthsRepository smthsRepository)
+        public SmthsService(ISmthsRepository smthsRepository)
         {
             this.smthsRepository = smthsRepository;
         }

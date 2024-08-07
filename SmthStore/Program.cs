@@ -16,8 +16,8 @@ builder.Services.AddDbContext<SmthStoreDbContext>(
     });
 
 
-//builder.Services.AddScoped<ISmthsServices, SmthsService>();
-//builder.Services.AddScoped<ISmthsRepository, SmthsRepository>();
+builder.Services.AddScoped<ISmthsServices, SmthsService>();
+builder.Services.AddScoped<ISmthsRepository, SmthsRepository>();
 
 var app = builder.Build();
 
